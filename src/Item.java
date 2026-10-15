@@ -1,11 +1,18 @@
 public abstract class Item {
     private String name;
     private String icon;
+    private Rarity rarity;
 
-    public Item(String name, String icon) {
+    private static int totalCreated = 0;
+
+    public Item(String name, String icon, Rarity rarity) {
         this.name = name;
         this.icon = icon;
+        this.rarity = rarity;
+        totalCreated++;
     }
+
+    public abstract void use();
 
     public String getName() {
         return name;
@@ -15,5 +22,11 @@ public abstract class Item {
         return icon;
     }
 
-    public abstract void use();
+    public Rarity getRarity() {
+        return rarity;
+    }
+
+    public static int getTotalCreated() {
+        return totalCreated;
+    }
 }
